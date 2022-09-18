@@ -5,6 +5,7 @@ const gameStart = (value) => {
   if (value === "start") {
     console.log("GAME START");
     defaultCase();
+    console.log(score);
     gameIsOn = true;
   }
 };
@@ -30,7 +31,7 @@ const defaultCase = () => {
     for (let i = 0; i < walls.length; i++) {
       walls[i].style.backgroundColor = "#eeeeee";
   }
-  game_status.innerText = "Begin by moving your mouse over the \"S\". You current score is ";
+  game_status.innerText = "Begin by moving your mouse over the \"S\". You current score is "+ score;
   game_status.style.color = "black";
 };
 
