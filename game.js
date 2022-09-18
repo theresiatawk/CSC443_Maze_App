@@ -3,7 +3,12 @@ window.onload = () => {
   const walls = document.getElementsByClassName("boundary");
   const game_status = document.getElementById("status");
   // console.log(localStorage);
-  let score = localStorage.getItem("score");
+  let userIndex = localStorage.getItem("userIndex");
+  let score = JSON.parse(localStorage.getItem("formData"))[userIndex].score;
+  // console.log(userIndex);
+  let localstor = JSON.parse(localStorage.getItem("formData")); 
+  // console.log(localstor[userIndex].score);
+  game_status.innerText = 'Begin by moving your mouse over the "S". Your score is '+ score;
 
   const gameStart = (value) => {
     if (value === "start") {
@@ -15,6 +20,9 @@ window.onload = () => {
 
   const gameEnd = () => {
     gameIsOn = false;
+    localstor[userIndex].score = score;
+    localStorage.setItem("formData", JSON.stringify(localstor));
+    console.log(localStorage);
   };
 
   const loosingCase = () => {
@@ -30,7 +38,7 @@ window.onload = () => {
     for (let i = 0; i < walls.length; i++) {
       walls[i].style.backgroundColor = "#eeeeee";
     }
-    game_status.innerText = 'Begin by moving your mouse over the "S".';
+    game_status.innerText = 'Begin by moving your mouse over the "S".Your score is '+ score;
     game_status.style.color = "black";
   };
 

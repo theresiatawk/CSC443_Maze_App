@@ -40,7 +40,7 @@ const signUp = e => {
         let users = JSON.parse(localStorage.getItem('formData'));
         let loginUser = users[userIndex];
         let score = loginUser.score;
-        localStorage.setItem("score", score);
+        localStorage.setItem("userIndex", userIndex);
         location.href = "./game.html";
     }
     e.preventDefault();
